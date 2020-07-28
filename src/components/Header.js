@@ -4,7 +4,7 @@ import {Link}  from 'react-router-dom'
 const Header = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between">
-            <div classNAme="container">
+            <div className="container">
                 <h1> 
                     <Link to={'/'} className="text-light">
                         CRUD - React, Redux, REST API & Axios
