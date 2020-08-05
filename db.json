@@ -29,6 +29,21 @@
       "nombre": "tequila",
       "precio": 666,
       "id": 6
+    },
+    {
+      "nombre": "tequila",
+      "precio": 4,
+      "id": 7
+    },
+    {
+      "nombre": "MERN2",
+      "precio": 4,
+      "id": 8
+    },
+    {
+      "nombre": "prueba",
+      "precio": 3,
+      "id": 9
     }
   ]
 }

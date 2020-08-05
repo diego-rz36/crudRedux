@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 //Actions de Redux
 import {crearNuevoProductoAction} from '../actions/productoActions';
 
-const NuevoProducto = () => {
+const NuevoProducto = ({history}) => {
 
     //State del componente
     const [nombre, guardarNombre] = useState('');
@@ -11,6 +11,9 @@ const NuevoProducto = () => {
 
     //utilizar useDispatrch
     const dispatch = useDispatch();
+
+    const cargando = useSelector( state => state.productos.loading);
+    const error = useSelector( state => state.productos.error);    
 
     const agregarProducto = producto => dispatch(crearNuevoProductoAction(producto));
     const submitNuevoProducto = e => {
@@ -26,6 +29,8 @@ const NuevoProducto = () => {
             nombre,
             precio
         });
+        //Redireccionar
+        history.push('/');
     }
     return (
         <div className="row justify-content-center">
@@ -62,6 +67,8 @@ const NuevoProducto = () => {
                             </div>
                             <button type="submit" className="btn btn-primary font-weight-bold text-uppercase d-block w-100">Agregar</button>
                         </form>
+                        {cargando ? <p>Cargando...</p> :null}
+                        {error ? <p className="alert alert-danger p2 mt-4 text-center">Hubo un error.</p> :null}
                     </div>
                 </div>
             </div>
