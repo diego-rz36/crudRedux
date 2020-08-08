@@ -4,7 +4,14 @@ import {
     AGREGAR_PRODUCTO_ERROR,
     COMENZAR_DESCARGA_PRODUCTOS,
     DESCARGA_PRODUCTOS_EXITO,
-    DESCARGA_PRODUCTOS_ERROR
+    DESCARGA_PRODUCTOS_ERROR,
+    OBTENER_PRODUCTO_ELIMINAR,
+    OBTENER_PRODUCTO_ELIMINADO_EXITO,
+    OBTENER_PRODUCTO_ELIMINADO_ERROR,
+    OBTENER_PRODUCTO_EDITAR,
+    COMENZAR_EDICION_PRODUCTO,
+    OBTENER_PRODUCTO_EDITADO_EXITO,
+    OBTENER_PRODUCTO_EDITADO_ERROR
 } from '../types';
 import clienteAxios from '../config/axios';
 import Swal from 'sweetalert2';
@@ -78,3 +85,68 @@ const descargarProductosError = productos => ({
     type: DESCARGA_PRODUCTOS_ERROR,
     payload: true
 });
+
+export function borrarProductoAction(id) {
+    return async (dispatch) => {
+        dispatch(obtenerProductoEliminar(id))
+        try {
+            await clienteAxios.delete(`/productos/${id}`);            
+            dispatch(eliminarProductoExito());
+            Swal.fire(
+                'ELiminado!',
+                'El producto se elimino correctamente.',
+                'success'
+              )
+        }catch(error){
+            dispatch(eliminarProductoError());
+        }
+    }
+}
+
+const obtenerProductoEliminar = id => ({
+    type: OBTENER_PRODUCTO_ELIMINAR,
+    payload: id
+})
+
+const eliminarProductoExito = () => ({
+    type: OBTENER_PRODUCTO_ELIMINADO_EXITO
+})
+
+const eliminarProductoError = () =>({
+    type: OBTENER_PRODUCTO_ELIMINADO_ERROR,
+    payload: true
+})
+
+export function obtenerProductoEditar(producto) {
+    return (dispatch) => {        
+        dispatch(obtenerProductoEditarAction(producto));
+    }
+}
+
+const obtenerProductoEditarAction = producto => ({
+    type: OBTENER_PRODUCTO_EDITAR,
+    payload: producto
+})
+export function editarProductoAction(producto) {
+    return async (dispatch) => {
+        dispatch( editarProducto());
+        try {
+            const resultado = await clienteAxios.put(`/productos/${producto.id}`,producto);
+            dispatch(editarProductoExito(producto));
+        }catch(error){
+            dispatch(editarProductoError());
+        }
+    }
+}
+
+const editarProducto = () => ({
+    type: COMENZAR_EDICION_PRODUCTO
+})
+
+const editarProductoExito = producto => ({
+    type: OBTENER_PRODUCTO_EDITADO_EXITO,
+    payload: producto
+})
+const editarProductoError = () => ({
+    type: OBTENER_PRODUCTO_EDITADO_ERROR
+})

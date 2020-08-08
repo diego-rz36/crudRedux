@@ -1,23 +1,8 @@
 {
   "productos": [
     {
-      "id": 1,
-      "nombre": "Jugo de Zanahoria",
-      "precio": "31111"
-    },
-    {
-      "id": 2,
-      "nombre": "Jugo de Naranja",
-      "precio": "1"
-    },
-    {
-      "nombre": "Jugo de Naranja",
-      "precio": "300",
-      "id": 3
-    },
-    {
       "nombre": "Rib Eye 800g",
-      "precio": "200",
+      "precio": "2000",
       "id": 4
     },
     {
@@ -31,19 +16,14 @@
       "id": 6
     },
     {
-      "nombre": "tequila",
-      "precio": 4,
+      "nombre": "tequila2",
+      "precio": "400",
       "id": 7
     },
     {
-      "nombre": "MERN2",
-      "precio": 4,
+      "nombre": "MERN22",
+      "precio": "400",
       "id": 8
-    },
-    {
-      "nombre": "prueba",
-      "precio": 3,
-      "id": 9
     }
   ]
 }
