@@ -24,6 +24,11 @@
       "nombre": "MERN22",
       "precio": "400",
       "id": 8
+    },
+    {
+      "nombre": "tequila",
+      "precio": 1,
+      "id": 9
     }
   ]
 }
